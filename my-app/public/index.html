@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: #4b3c5d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .badge {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .section {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            background: white;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .info-box {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .pill {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .medication {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>John Doe</h2>
+            <p>ID: #PAT-2024-0042</p>
+            <span class="badge">Primary Patient</span>
+        </div>
+        <div class="section">
+            <div class="title">Heart Rate</div>
+            <div class="info-box">78 BPM</div>
+        </div>
+        <div class="section">
+            <div class="title">Medications</div>
+            <div class="info-box">2 Active</div>
+        </div>
+        <div class="section">
+            <div class="title">Emergency Information</div>
+            <div class="info-box">
+                <p><strong>Blood Type:</strong> A+</p>
+                <p><strong>Allergies:</strong> Penicillin, Peanuts</p>
+                <p><strong>Emergency Contact:</strong> Sarah Doe (Wife)</p>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">Today's Medications</div>
+            <div class="info-box">
+                <div class="medication"><span>Lisinopril - 10mg - 8:00 AM</span> <span class="pill">Taken</span></div>
+                <div class="medication"><span>Metformin - 500mg - 12:00 PM</span> <span class="pill">Taken</span></div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">Recent Health Logs</div>
+            <div class="info-box">
+                <p>Mood & Symptoms - Today, 2:30 PM</p>
+                <p>Blood Pressure - Yesterday, 9:15 AM</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
