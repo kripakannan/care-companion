@@ -50,6 +50,7 @@ const SettingsPage = () => {
 const MenuItem = ({ icon, label }) => {
   return (
     <div className="flex items-center py-3 border-b last:border-b-0 text-gray-700">
+      {/* Ensure icon is wrapped properly */}
       <span className="text-xl text-gray-600">{icon}</span>
       <span className="ml-4">{label}</span>
     </div>
