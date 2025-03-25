@@ -10,47 +10,56 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f7fc;
-            color: #333;
+            background-color: #f7f8fa;
+            color: #444;
         }
 
         .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
         }
 
         h1 {
             text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            color: #6c63ff;
+            letter-spacing: 2px;
         }
 
         /* Search Bar */
         input#searchBar {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 20px;
-            font-size: 1em;
-            margin-bottom: 20px;
+            padding: 14px 22px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 1.1em;
+            margin-bottom: 40px;
             outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         input#searchBar:focus {
             border-color: #6c63ff;
-            box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+            box-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
         }
 
         /* Section Titles */
         h2 {
-            color: #444;
-            border-bottom: 2px solid #6c63ff;
-            padding-bottom: 5px;
-            margin-top: 20px;
+            color: #333;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: left;
+            border-bottom: 3px solid #6c63ff;
+            padding-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         /* Carousel Styles */
@@ -58,8 +67,8 @@
             display: flex;
             overflow-x: auto;
             scroll-behavior: smooth;
-            gap: 10px;
-            padding: 10px 0;
+            gap: 20px;
+            padding: 20px 0;
         }
 
         .carousel::-webkit-scrollbar {
@@ -68,48 +77,96 @@
 
         .item {
             flex: 0 0 auto;
-            width: 280px;
-            background: white;
-            border-radius: 8px;
+            width: 300px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
 
         .item:hover {
-            transform: scale(1.05);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
-        iframe {
+        .item img {
             width: 100%;
-            height: 180px;
-            border: none;
+            height: 220px;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .item .title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .item:hover img {
+            opacity: 0.85;
+        }
+
+        .item:hover .title {
+            opacity: 1;
         }
 
         /* Caregiver Support List */
         ul {
             list-style: none;
             padding: 0;
+            margin-top: 30px;
         }
 
         ul li {
             background: #6c63ff;
-            margin: 10px 0;
-            padding: 12px;
-            border-radius: 6px;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
-            font-size: 1em;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: white;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
         }
 
         ul li a {
             text-decoration: none;
             color: white;
-            font-weight: bold;
+            font-weight: 600;
+            display: inline-block;
+            padding: 5px;
         }
 
         ul li:hover {
             background: #5148d1;
+            transform: translateY(-3px);
         }
+
+        /* Video Styles */
+        iframe {
+            width: 100%;
+            height: 220px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        iframe:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
     </style>
 </head>
 <body>
@@ -119,34 +176,55 @@
         
         <h2>Favorites</h2>
         <div class="carousel" id="favorites">
-            <div class="item" data-title="Mental Health Review Journal">
-                <iframe src="article1.html"></iframe>
+            <div class="item" onclick="openArticle('article1.html')">
+                <img src="article1.png" alt="Mental Health Review Journal">
+                <div class="title">Mental Health Review Journal</div>
             </div>
-            <div class="item" data-title="Caregiving - The Passions Project">
-                <iframe src="article2.html"></iframe>
+            <div class="item" onclick="openArticle('article2.html')">
+                <img src="article2.png" alt="Caregiving - The Passions Project">
+                <div class="title">Caregiving - The Passions Project</div>
             </div>
-            <div class="item" data-title="Nursing Care Video">
-                <iframe src="video1.mp4"></iframe>
+            <div class="item">
+                <iframe src="https://www.youtube.com/embed/MA9s2vZflw4" allowfullscreen></iframe>
             </div>
+            <div class="item" onclick="openArticle('article3.html')">
+                <img src="article3.png" alt="Home Healthcare Now">
+                <div class="title">Home Healthcare Now</div>
+            </div>
+            <div class="item" onclick="openArticle('article4.html')">
+                <img src="article4.png" alt="Mental Health and Physical Activity">
+                <div class="title">Mental Health and Physical Activity</div>
+            </div>
+            
         </div>
         
         <h2>Recommended</h2>
         <div class="carousel" id="recommended">
-            <div class="item" data-title="Home Healthcare Now">
-                <iframe src="article3.html"></iframe>
+            <div class="item" onclick="openArticle('article3.html')">
+                <img src="article5.png" alt="Home Healthcare Now">
+                <div class="title">Home Healthcare Now</div>
             </div>
-            <div class="item" data-title="Mental Health and Physical Activity">
-                <iframe src="article4.html"></iframe>
+            <div class="item">
+                <iframe src="https://www.youtube.com/embed/oK8eYmJUt7Y" allowfullscreen></iframe>
             </div>
-            <div class="item" data-title="Elderly Veteran Support Video">
-                <iframe src="video2.mp4"></iframe>
+            <div class="item" onclick="openArticle('article4.html')">
+                <img src="article4.png" alt="Mental Health and Physical Activity">
+                <div class="title">Mental Health and Physical Activity</div>
+            </div>
+            <div class="item" onclick="openArticle('article5.html')">
+                <img src="article5.png" alt="Caregiving - The Passions Project">
+                <div class="title">Caregiving - The Passions Project</div>
+            </div>
+            <div class="item" onclick="openArticle('article5.html')">
+                <img src="article5.png" alt="Caregiving - The Passions Project">
+                <div class="title">Caregiving - The Passions Project</div>
             </div>
         </div>
         
         <h2>Caregiver Support Groups</h2>
         <ul>
-            <li data-title="Caring for Elderly Patients"><a href="group1.html">Caring for Elderly Patients</a></li>
-            <li data-title="NAMI Northside Atlanta"><a href="group2.html">NAMI Northside Atlanta</a></li>
+            <li data-title="Caring for Elderly Patients"><a href="https://aging.georgia.gov/tools-resources/caregiving">Caring for Elderly Patients</a></li>
+            <li data-title="NAMI Northside Atlanta"><a href="https://naminorthsideatlanta.org/">NAMI Northside Atlanta</a></li>
         </ul>
     </div>
 
@@ -154,11 +232,18 @@
         function filterResources() {
             let input = document.getElementById("searchBar").value.toLowerCase();
             let items = document.querySelectorAll(".item, ul li");
-
+    
             items.forEach(item => {
-                let title = item.getAttribute("data-title").toLowerCase();
+                let title = item.querySelector('.title') 
+                            ? item.querySelector('.title').innerText.toLowerCase()
+                            : item.getAttribute("data-title")?.toLowerCase() || '';
+    
                 item.style.display = title.includes(input) ? "block" : "none";
             });
+        }
+    
+        function openArticle(url) {
+            window.location.href = url;
         }
     </script>
 </body>
