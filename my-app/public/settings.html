@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="flex flex-col items-center min-h-screen p-4">
+    <!-- Top Navbar -->
+    <div class="w-full flex items-center justify-between py-4 px-6 bg-white shadow-md rounded-lg">
+      <i class="fas fa-bars text-gray-600 text-xl cursor-pointer" id="menu-toggle"></i>
+      <h1 class="text-2xl font-semibold text-gray-700">Settings</h1>
+      <div class="w-6"></div>
+    </div>
+
+    <div class="w-full max-w-md mt-6">
+      <!-- Account Section -->
+      <h2 class="text-lg font-semibold text-gray-600">Account</h2>
+      <div class="bg-white p-4 rounded-lg shadow-md mt-2">
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('account-dropdown')">
+          <i class="fas fa-user text-xl text-gray-600"></i>
+          <span class="ml-4">Edit profile</span>
+        </div>
+        <div id="account-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <input type="text" class="w-full p-2 border rounded-md mb-2" placeholder="New username">
+          <input type="email" class="w-full p-2 border rounded-md" placeholder="New email">
+          <button class="w-full mt-2 bg-blue-500 text-white py-2 rounded-md" onclick="saveProfile()">Save Changes</button>
+        </div>
+
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('theme-dropdown')">
+          <i class="fas fa-palette text-xl text-gray-600"></i>
+          <span class="ml-4">Themes</span>
+        </div>
+        <div id="theme-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <button class="w-full py-2 mb-2 bg-gray-300 rounded-md">Light Mode</button>
+          <button class="w-full py-2 bg-gray-800 text-white rounded-md">Dark Mode</button>
+        </div>
+
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('notifications-dropdown')">
+          <i class="fas fa-bell text-xl text-gray-600"></i>
+          <span class="ml-4">Notifications</span>
+        </div>
+        <div id="notifications-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <label class="block mb-2">
+            <input type="checkbox" class="mr-2"> Email Notifications
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2"> SMS Notifications
+          </label>
+        </div>
+
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('privacy-dropdown')">
+          <i class="fas fa-lock text-xl text-gray-600"></i>
+          <span class="ml-4">Privacy</span>
+        </div>
+        <div id="privacy-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <label class="block mb-2">
+            <input type="checkbox" class="mr-2"> Share data with third parties
+          </label>
+          <label class="block mb-2">
+            <input type="checkbox" class="mr-2"> Enable location access
+          </label>
+        </div>
+      </div>
+
+      <!-- Support & About Section -->
+      <h2 class="text-lg font-semibold text-gray-600 mt-6">Support & About</h2>
+      <div class="bg-white p-4 rounded-lg shadow-md mt-2">
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('subscription-dropdown')">
+          <i class="fas fa-credit-card text-xl text-gray-600"></i>
+          <span class="ml-4">My Subscription</span>
+        </div>
+        <div id="subscription-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <span class="block mb-2">Subscription Level: Premium</span>
+          <button class="w-full py-2 bg-blue-500 text-white rounded-md">Manage Subscription</button>
+        </div>
+
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('help-dropdown')">
+          <i class="fas fa-question-circle text-xl text-gray-600"></i>
+          <span class="ml-4">Help & Support</span>
+        </div>
+        <div id="help-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <button class="w-full py-2 bg-blue-500 text-white rounded-md">Contact Support</button>
+          <button class="w-full py-2 mt-2 bg-blue-300 rounded-md">FAQ</button>
+        </div>
+
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('terms-dropdown')">
+          <i class="fas fa-info-circle text-xl text-gray-600"></i>
+          <span class="ml-4">Terms and Policies</span>
+        </div>
+        <div id="terms-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <button class="w-full py-2 bg-blue-500 text-white rounded-md">View Terms</button>
+        </div>
+      </div>
+
+      <!-- Actions Section -->
+      <h2 class="text-lg font-semibold text-gray-600 mt-6">Actions</h2>
+      <div class="bg-white p-4 rounded-lg shadow-md mt-2">
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('report-dropdown')">
+          <i class="fas fa-flag text-xl text-gray-600"></i>
+          <span class="ml-4">Report a problem</span>
+        </div>
+        <div id="report-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <textarea class="w-full p-2 border rounded-md mb-2" placeholder="Describe the issue..."></textarea>
+          <button class="w-full py-2 bg-blue-500 text-white rounded-md" onclick="submitReport()">Submit Report</button>
+        </div>
+
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('add-account-dropdown')">
+          <i class="fas fa-user-plus text-xl text-gray-600"></i>
+          <span class="ml-4">Add account</span>
+        </div>
+        <div id="add-account-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <input type="email" class="w-full p-2 border rounded-md mb-2" placeholder="Enter email to add">
+          <button class="w-full py-2 bg-blue-500 text-white rounded-md" onclick="addAccount()">Add Account</button>
+        </div>
+
+        <div class="flex items-center py-3 border-b last:border-b-0 text-gray-700" onclick="toggleDropdown('delete-account-dropdown')">
+          <i class="fas fa-trash text-xl text-gray-600"></i>
+          <span class="ml-4">Delete/Disable account</span>
+        </div>
+        <div id="delete-account-dropdown" class="hidden mt-2 pl-8 text-gray-700">
+          <button class="w-full py-2 bg-red-500 text-white rounded-md" onclick="deleteAccount()">Delete Account</button>
+        </div>
+      </div>
+
+      <!-- Log Out Button -->
+      <button class="w-full mt-6 bg-red-500 text-white flex items-center justify-center py-3 rounded-full shadow-md hover:bg-red-600 transition" id="logout-button">
+        <i class="fas fa-sign-out-alt mr-2"></i> Log Out
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Function to toggle dropdowns
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle('hidden');
+      }
+    }
+
+    // Save Profile functionality
+    function saveProfile() {
+      alert('Profile saved!');
+      const dropdown = document.getElementById('account-dropdown');
+      dropdown.classList.add('hidden');
+    }
+
+    // Submit Report functionality
+    function submitReport() {
+      alert('Report submitted!');
+      const dropdown = document.getElementById('report-dropdown');
+      dropdown.classList.add('hidden');
+    }
+
+    // Add Account functionality
+    function addAccount() {
+      alert('Account added!');
+      const dropdown = document.getElementById('add-account-dropdown');
+      dropdown.classList.add('hidden');
+    }
+
+    // Delete Account functionality
+    function deleteAccount() {
+      alert('Account deleted!');
+      const dropdown = document.getElementById('delete-account-dropdown');
+      dropdown.classList.add('hidden');
+    }
+
+    // Log Out functionality (simulated by clearing sessionStorage)
+    document.getElementById('logout-button').addEventListener('click', function() {
+      sessionStorage.clear(); // Clear session storage as a mock of logging out
+      alert("You have been logged out.");
+      window.location.reload(); // Reload the page after logout
+    });
+  </script>
+
+</body>
+</html>
