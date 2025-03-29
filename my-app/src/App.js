@@ -1,38 +1,52 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+
+import { auth } from "./firebase";
+import LoginPage from "./pages/LoginPage";
 import SettingsPage from "./pages/SettingsPage";
+import ResourcesPage from "./pages/ResourcesPage";
+import HomeScreen from "./pages/HomeScreen";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          {/* Default Home Page */}
-          <Route
-            path="/"
-            element={
-              <div className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-                </a>
-              </div>
-            }
-          />
-
-          {/* Settings Page Route */}
-          <Route path="/settings" element={<SettingsPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={user ? <Navigate to="/home" /> : <LoginPage />}
+        />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/home" /> : <LoginPage />}
+        />
+        <Route
+          path="/home"
+          element={user ? <HomeScreen /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/settings"
+          element={user ? <SettingsPage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/resources"
+          element={user ? <ResourcesPage /> : <Navigate to="/login" />}
+        />
+      </Routes>
     </Router>
   );
 }
