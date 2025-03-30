@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import SettingsPage from "./pages/SettingsPage";
 import ResourcesPage from "./pages/ResourcesPage";
 import HomeScreen from "./pages/HomeScreen";
+import CalendarPage from "./pages/CalendarPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,6 +46,10 @@ function App() {
         <Route
           path="/resources"
           element={user ? <ResourcesPage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/calendar"
+          element={user ? <CalendarPage /> : <Navigate to="/login" />}
         />
       </Routes>
     </Router>

@@ -27,6 +27,12 @@ export default function HomeScreen() {
           >
             Settings
           </button>
+          <button
+            onClick={() => navigate('/calendar')}
+            className="bg-gray-700 text-white px-6 py-3 rounded-md shadow-md hover:bg-gray-800 transition"
+          >
+            Calendar
+          </button>
         </div>
       </div>
     </>

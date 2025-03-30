@@ -21,6 +21,7 @@ export default function Navbar() {
       <div className="space-x-4">
         <button onClick={() => navigate('/resources')} className="text-blue-600 hover:underline">Resources</button>
         <button onClick={() => navigate('/settings')} className="text-blue-600 hover:underline">Settings</button>
+        <button onClick={() => navigate('/calendar')} className="text-blue-600 hover:underline">Calendar</button>
         <button
           onClick={handleLogout}
           className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
