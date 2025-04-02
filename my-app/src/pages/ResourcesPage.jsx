@@ -1,6 +1,6 @@
 import React from 'react';
 import './ResourcesPage.css';
-import Navbar from '../components/Navbar'; // ✅ Navbar import
+import Navbar from '../components/Navbar';
 
 const ResourcesPage = () => {
   const openArticle = (url) => {
@@ -9,7 +9,7 @@ const ResourcesPage = () => {
 
   return (
     <div>
-      <Navbar /> {/* ✅ Navbar at the top of the page */}
+      <Navbar />
 
       <div className="container">
         <h1>Resources</h1>
