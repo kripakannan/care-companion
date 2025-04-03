@@ -51,7 +51,11 @@ export default function ViewPatient() {
               <span className="value">{data.emergency?.contact || "Not specified"}</span>
             </div>
           </div>
-          <Link to="/emergency-info" className="view-all-button">
+          <Link 
+            to="/emergency-info" 
+            state={{ patientId: id }}
+            className="view-all-button"
+          >
             View All Emergency Info
           </Link>
         </div>
