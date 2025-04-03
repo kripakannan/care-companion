@@ -1,0 +1,311 @@
+.patient-profile-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-top: 60px;
+}
+
+.patient-profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Profile Header */
+.profile-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.profile-title-container {
+  margin-bottom: 25px;
+}
+
+.profile-title {
+  font-size: 2.2em;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.profile-divider {
+  width: 60px;
+  height: 4px;
+  background-color: #4CAF50;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.patient-info {
+  text-align: center;
+}
+
+.patient-name-container {
+  margin-bottom: 15px;
+}
+
+.patient-name {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.patient-id-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.id-label {
+  color: #666;
+  font-size: 1.1em;
+}
+
+.patient-id {
+  color: #4CAF50;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.patient-email-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.email-label {
+  color: #666;
+  font-size: 1.1em;
+}
+
+.patient-email {
+  color: #666;
+  font-size: 1.1em;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* Emergency Information Section */
+.emergency-section {
+  margin-bottom: 40px;
+}
+
+.info-grid {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  font-weight: 600;
+  color: #333;
+  min-width: 150px;
+}
+
+.value {
+  color: #666;
+}
+
+/* Medications Section */
+.medications-section {
+  margin-bottom: 40px;
+}
+
+.medications-count {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.medications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.medication-item {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #4CAF50;
+}
+
+.medication-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.medication-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666;
+}
+
+.dosage {
+  font-weight: 500;
+}
+
+.time {
+  color: #888;
+}
+
+.status-button {
+  margin-left: auto;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.status-button.taken {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-button.not-taken {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.status-button:hover {
+  opacity: 0.9;
+}
+
+/* Caregivers Section */
+.caregivers-section {
+  margin-bottom: 40px;
+}
+
+.no-caregivers {
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.caregivers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.caregiver-item {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.caregiver-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.caregiver-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.caregiver-email {
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Pending Requests Section */
+.pending-requests-section {
+  margin-bottom: 40px;
+}
+
+/* View All Button */
+.view-all-button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: background-color 0.2s;
+}
+
+.view-all-button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .patient-profile-container {
+    margin: 10px;
+    padding: 20px;
+  }
+
+  .profile-title {
+    font-size: 1.8em;
+  }
+
+  .patient-name {
+    font-size: 1.5em;
+  }
+
+  .section-title {
+    font-size: 1.2em;
+  }
+
+  .label {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .patient-profile-container {
+    padding: 15px;
+  }
+
+  .profile-title {
+    font-size: 1.5em;
+  }
+
+  .patient-name {
+    font-size: 1.3em;
+  }
+
+  .patient-id-container,
+  .patient-email-container {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .medication-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .status-button {
+    margin-left: 0;
+  }
+}

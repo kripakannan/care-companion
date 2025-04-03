@@ -1,0 +1,138 @@
+.caregiver-patients-page {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    width: 100%;
+    overflow-x: hidden;
+    padding-top: 60px; /* Add padding for navbar */
+}
+
+.caregiver-patients-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.page-title {
+    font-size: 1.8em;
+    color: #333;
+    margin: 0 0 30px 0;
+    padding-right: 40px; /* Add padding to prevent overlap with menu button */
+}
+
+.no-patients {
+    text-align: center;
+    color: #666;
+    font-size: 1.1em;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.patients-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.patient-card {
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.patient-card:hover {
+    background: #f0f0f0;
+}
+
+.patient-name {
+    font-size: 1.1em;
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.patient-id {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+.add-patient-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.section-title {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.add-patient-container {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/* Custom scrollbar */
+.caregiver-patients-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.caregiver-patients-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.caregiver-patients-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.caregiver-patients-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (max-width: 768px) {
+    .caregiver-patients-container {
+        margin: 10px;
+        padding: 15px;
+        width: calc(100% - 20px);
+    }
+
+    .page-title {
+        font-size: 1.5em;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .caregiver-patients-page {
+        padding-top: 50px;
+    }
+
+    .caregiver-patients-container {
+        margin: 0;
+        padding: 15px;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .page-title {
+        font-size: 1.3em;
+        padding-right: 25px;
+    }
+
+    .patient-card {
+        padding: 12px;
+    }
+} 

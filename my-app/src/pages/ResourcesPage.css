@@ -1,0 +1,240 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f8fa;
+    color: #444;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #6c63ff;
+    letter-spacing: 1px;
+  }
+  
+  /* Search Bar */
+  input#searchBar {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 1em;
+    margin-bottom: 30px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+  
+  input#searchBar:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.2);
+  }
+  
+  /* Section Titles */
+  h2 {
+    color: #333;
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align: left;
+    border-bottom: 2px solid #6c63ff;
+    padding-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Carousel Styles */
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 15px;
+    padding: 15px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .item {
+    flex: 0 0 auto;
+    width: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+  
+  .item .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+  }
+  
+  .item:hover img {
+    opacity: 0.85;
+  }
+  
+  .item:hover .title {
+    opacity: 1;
+  }
+  
+  /* Caregiver Support List */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  ul li {
+    background: #6c63ff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: white;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    display: inline-block;
+    padding: 5px;
+  }
+  
+  ul li:hover {
+    background: #5148d1;
+    transform: translateY(-2px);
+  }
+  
+  /* Video Styles */
+  iframe {
+    width: 100%;
+    height: 180px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  iframe:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .container {
+      margin: 10px;
+      padding: 12px;
+    }
+  
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+  
+    h2 {
+      font-size: 1.3em;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+  
+    .item {
+      width: 240px;
+    }
+  
+    .item img, iframe {
+      height: 160px;
+    }
+  
+    .item .title {
+      font-size: 1em;
+      padding: 10px;
+    }
+  
+    ul li {
+      padding: 12px;
+      font-size: 1em;
+    }
+  
+    input#searchBar {
+      padding: 10px 14px;
+      font-size: 0.95em;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      margin: 8px;
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 1.6em;
+    }
+  
+    h2 {
+      font-size: 1.2em;
+    }
+  
+    .item {
+      width: 200px;
+    }
+  
+    .item img, iframe {
+      height: 140px;
+    }
+  
+    .item .title {
+      font-size: 0.9em;
+      padding: 8px;
+    }
+  
+    ul li {
+      padding: 10px;
+      font-size: 0.95em;
+    }
+  }
