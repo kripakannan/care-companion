@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 
 const ResourcesPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [modalUrl, setModalUrl] = useState(null);
 
   const handleSearch = (e) => {
     const input = e.target.value.toLowerCase();
@@ -19,6 +20,14 @@ const ResourcesPage = () => {
 
   const openArticle = (url) => {
     window.location.href = url;
+  };
+
+  const openModal = (url) => {
+    setModalUrl(url);
+  };
+
+  const closeModal = () => {
+    setModalUrl(null);
   };
 
   return (
@@ -96,17 +105,42 @@ const ResourcesPage = () => {
           <h2>Caregiver Support Groups</h2>
           <ul>
             <li data-title="Caring for Elderly Patients">
-              <a href="https://aging.georgia.gov/tools-resources/caregiving" rel="noreferrer">
+              <button
+                className="text-blue-600 underline"
+                onClick={() => openModal("https://aging.georgia.gov/tools-resources/caregiving")}
+              >
                 Caring for Elderly Patients
-              </a>
+              </button>
             </li>
             <li data-title="NAMI Northside Atlanta">
-              <a href="https://naminorthsideatlanta.org/" rel="noreferrer">
+              <button
+                className="text-blue-600 underline"
+                onClick={() => openModal("https://naminorthsideatlanta.org/")}
+              >
                 NAMI Northside Atlanta
-              </a>
+              </button>
             </li>
           </ul>
         </section>
+
+        {/* Modal */}
+        {modalUrl && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-4 rounded-lg shadow-lg w-11/12 h-5/6 relative">
+              <button
+                onClick={closeModal}
+                className="absolute top-2 right-2 text-gray-600 hover:text-black text-lg"
+              >
+                &times;
+              </button>
+              <iframe
+                src={modalUrl}
+                title="Support Group Info"
+                className="w-full h-full rounded"
+              ></iframe>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
