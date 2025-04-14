@@ -96,12 +96,12 @@ const ResourcesPage = () => {
           <h2>Caregiver Support Groups</h2>
           <ul>
             <li data-title="Caring for Elderly Patients">
-              <a href="https://aging.georgia.gov/tools-resources/caregiving" target="_blank" rel="noreferrer">
+              <a href="https://aging.georgia.gov/tools-resources/caregiving" rel="noreferrer">
                 Caring for Elderly Patients
               </a>
             </li>
             <li data-title="NAMI Northside Atlanta">
-              <a href="https://naminorthsideatlanta.org/" target="_blank" rel="noreferrer">
+              <a href="https://naminorthsideatlanta.org/" rel="noreferrer">
                 NAMI Northside Atlanta
               </a>
             </li>
