@@ -93,7 +93,9 @@ const EmergencyInfo = () => {
             bloodType: data.emergency?.bloodType || "",
             allergies: data.emergency?.allergies || [],
             medications: data.medications || [],
-            primaryDoctor: data.emergency?.primaryDoctor || { name: "", phone: "" },
+            primaryDoctors: Array.isArray(data.emergency?.primaryDoctors)
+              ? data.emergency.primaryDoctors
+              : [{ name: "", phone: "", specialty: "" }],
             primaryPharmacy: data.emergency?.primaryPharmacy || { name: "", phone: "" },
             emergencyContacts: data.emergency?.emergencyContacts || []
           };
@@ -146,7 +148,7 @@ const EmergencyInfo = () => {
         emergency: {
           bloodType: editedData.bloodType,
           allergies: editedData.allergies,
-          primaryDoctor: editedData.primaryDoctor,
+          primaryDoctors: editedData.primaryDoctors,
           primaryPharmacy: editedData.primaryPharmacy,
           emergencyContacts: editedData.emergencyContacts
         },
@@ -416,122 +418,88 @@ const EmergencyInfo = () => {
               </div>
 
               <div className="info-subsection">
-                <h3 className="subsection-title">Emergency Contacts:</h3>
+                <h3 className="subsection-title">Primary Doctors:</h3>
                 {isEditing ? (
                   <div className="edit-list">
-                    {editedData.emergencyContacts.map((contact, index) => (
+                    {editedData.primaryDoctors.map((doc, index) => (
                       <div key={index} className="edit-contact">
                         <div className="edit-field">
                           <label>Name:</label>
                           <input
                             type="text"
-                            value={contact.name}
-                            onChange={(e) =>
-                              handleEmergencyContactChange(index, "name", e.target.value)
-                            }
+                            value={doc.name}
+                            onChange={(e) => {
+                              const updated = [...editedData.primaryDoctors];
+                              updated[index].name = e.target.value;
+                              setEditedData({ ...editedData, primaryDoctors: updated });
+                            }}
                             className="edit-input"
-                            placeholder="Contact Name"
+                            placeholder="Doctor Name"
                           />
                         </div>
                         <div className="edit-field">
                           <label>Phone:</label>
                           <input
                             type="tel"
-                            value={contact.phone}
-                            onChange={(e) =>
-                              handleEmergencyContactChange(index, "phone", e.target.value)
-                            }
+                            value={doc.phone}
+                            onChange={(e) => {
+                              const updated = [...editedData.primaryDoctors];
+                              updated[index].phone = e.target.value;
+                              setEditedData({ ...editedData, primaryDoctors: updated });
+                            }}
                             className="edit-input"
                             placeholder="Phone Number"
                           />
                         </div>
                         <div className="edit-field">
-                          <label>Relationship:</label>
+                          <label>Specialty:</label>
                           <input
                             type="text"
-                            value={contact.relationship}
-                            onChange={(e) =>
-                              handleEmergencyContactChange(index, "relationship", e.target.value)
-                            }
+                            value={doc.specialty}
+                            onChange={(e) => {
+                              const updated = [...editedData.primaryDoctors];
+                              updated[index].specialty = e.target.value;
+                              setEditedData({ ...editedData, primaryDoctors: updated });
+                            }}
                             className="edit-input"
-                            placeholder="e.g. Parent, Spouse, Sibling"
+                            placeholder="Specialty"
                           />
                         </div>
                         <button
                           className="remove-button"
-                          onClick={() => handleRemoveEmergencyContact(index)}
+                          onClick={() => {
+                            const updated = editedData.primaryDoctors.filter((_, i) => i !== index);
+                            setEditedData({ ...editedData, primaryDoctors: updated });
+                          }}
                         >
                           ×
                         </button>
                       </div>
                     ))}
-                    <button className="add-button" onClick={handleAddEmergencyContact}>
-                      + Add Emergency Contact
+                    <button
+                      className="add-button"
+                      onClick={() =>
+                        setEditedData({
+                          ...editedData,
+                          primaryDoctors: [...editedData.primaryDoctors, { name: "", phone: "", specialty: "" }]
+                        })
+                      }
+                    >
+                      + Add Doctor
                     </button>
                   </div>
                 ) : (
                   <div className="contacts-list">
-                    {patientData.emergencyContacts.length > 0 ? (
-                      patientData.emergencyContacts.map((contact, index) => (
-                        <div key={index} className="contact-info">
-                          <p><strong>Name:</strong> {contact.name}</p>
-                          <p><strong>Phone:</strong> {contact.phone}</p>
-                          <p><strong>Relationship:</strong> {contact.relationship}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="no-contacts">No emergency contacts added yet.</p>
-                    )}
+                    {patientData.primaryDoctors.map((doc, index) => (
+                      <div key={index} className="contact-info">
+                        <p><strong>Name:</strong> {doc.name}</p>
+                        <p><strong>Phone:</strong> {doc.phone}</p>
+                        <p><strong>Specialty:</strong> {doc.specialty}</p>
+                      </div>
+                    ))}
                   </div>
                 )}
-              </div>
-
-              <div className="info-subsection">
-                <h3 className="subsection-title">Primary Doctor:</h3>
-                {isEditing ? (
-                  <div className="edit-contact">
-                    <div className="edit-field">
-                      <label>Name:</label>
-                      <input
-                        type="text"
-                        value={editedData.primaryDoctor.name}
-                        onChange={(e) =>
-                          setEditedData({
-                            ...editedData,
-                            primaryDoctor: {
-                              ...editedData.primaryDoctor,
-                              name: e.target.value
-                            }
-                          })
-                        }
-                        className="edit-input"
-                      />
-                    </div>
-                    <div className="edit-field">
-                      <label>Phone:</label>
-                      <input
-                        type="tel"
-                        value={editedData.primaryDoctor.phone}
-                        onChange={(e) =>
-                          setEditedData({
-                            ...editedData,
-                            primaryDoctor: {
-                              ...editedData.primaryDoctor,
-                              phone: e.target.value
-                            }
-                          })
-                        }
-                        className="edit-input"
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="contact-info">
-                    <p><strong>Name:</strong> {patientData.primaryDoctor.name}</p>
-                    <p><strong>Phone:</strong> {patientData.primaryDoctor.phone}</p>
-                  </div>
-                )}
-              </div>
+            </div>
 
               <div className="info-subsection">
                 <h3 className="subsection-title">Primary Pharmacy:</h3>
