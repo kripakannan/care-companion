@@ -106,15 +106,13 @@ const ResourcesPage = () => {
           <ul>
             <li data-title="Caring for Elderly Patients">
               <button
-                className="text-blue-600 underline"
-                onClick={() => openModal("https://aging.georgia.gov/tools-resources/caregiving")}
+                onClick={() => openModal("https://happyhealthycaregiver.com/atlanta-family-caregiver-support/")}
               >
                 Caring for Elderly Patients
               </button>
             </li>
             <li data-title="NAMI Northside Atlanta">
               <button
-                className="text-blue-600 underline"
                 onClick={() => openModal("https://naminorthsideatlanta.org/")}
               >
                 NAMI Northside Atlanta
